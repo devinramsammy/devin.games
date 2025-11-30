@@ -35,29 +35,23 @@ const CurrentTime = () => {
 
   return (
     <div className="grid grid-cols-[1fr_auto_1fr] items-baseline">
-      <div className="text-right">
-        <span className="text-[#9aa0a6] leading-none font-['QuartzMS'] tracking-[0.05em] text-[6.3cqw]">
+      <div className="text-right px-[0.6cqw]">
+        <span className="text-[#9aa0a6] leading-none font-['QuartzMS'] tracking-[0.05em] text-[6cqw]">
           {hours}
         </span>
       </div>
 
-      <div className="text-center px-0.5 relative top-[-0.05em]">
-        <span className="text-[#9aa0a6] leading-none block animate-fade-6s font-['QuartzMS'] text-[6.3cqw]">
+      <div className="text-center relative top-[-.9cqw]">
+        <span className="text-[#9aa0a6] leading-none block animate-fade-6s text-[4.5cqw]">
           :
         </span>
       </div>
 
-      <div className="flex items-baseline text-left">
-        <span className="text-[#9aa0a6] leading-none font-['QuartzMS'] text-[6.3cqw]">
+      <div className="text-left flex items-baseline">
+        <span className="text-[#9aa0a6] leading-none font-['QuartzMS'] text-[6cqw]">
           {minutes}
         </span>
-        <span
-          className="text-[#9aa0a6] font-semibold text-[1.65cqw] ml-[1.8cqw]"
-          style={{
-            fontFamily:
-              '"Arial Rounded MT Bold", "Varela Round", "M PLUS Rounded 1c", system-ui, sans-serif',
-          }}
-        >
+        <span className="text-[#9aa0a6] font-['Adventure'] font-extrabold text-[2.2cqw] ml-[1.9cqw] ">
           {ampm}
         </span>
       </div>

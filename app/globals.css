@@ -10,6 +10,15 @@
   font-display: swap;
 }
 
+/* Adventure Font */
+@font-face {
+  font-family: "Adventure";
+  src: url("/fonts/Adventure.otf");
+  font-weight: extrabold;
+  font-style: normal;
+  font-display: swap;
+}
+
 @keyframes fade-6s {
   0% {
     opacity: 0;
