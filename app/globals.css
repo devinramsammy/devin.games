@@ -1,6 +1,37 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* 7-Segment Display Font - Quartz MS Regular */
+@font-face {
+  font-family: "QuartzMS";
+  src: url("/fonts/QuartzMSRegular.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@keyframes fade-6s {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-fade-6s {
+  animation: fade-6s 6s infinite;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -116,7 +147,24 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    background-color: #ffffff;
+    background-image: repeating-linear-gradient(
+      180deg,
+      #ffffff 0px,
+      #fafafa 1px,
+      #ffffff 2px,
+      #f8f8f8 3px,
+      #ffffff 4px,
+      #fafafa 5px,
+      #ffffff 6px
+    );
+    background-size: 100% 6px;
+    min-height: 100vh;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: transparent;
+    min-height: 100vh;
   }
 }
