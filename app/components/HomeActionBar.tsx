@@ -1,6 +1,7 @@
 "use client";
 
 import CurrentTime from "./CurrentTime";
+import CurrentDate from "./CurrentDate";
 
 const HomeActionBar = () => {
   return (
@@ -26,8 +27,12 @@ const HomeActionBar = () => {
           />
         </svg>
 
-        <div className="absolute left-1/2 -translate-x-1/2 top-[36.11%] -translate-y-full flex justify-center">
+        <div className="absolute left-1/2 -translate-x-1/2 top-[40%] -translate-y-full flex justify-center">
           <CurrentTime />
+        </div>
+
+        <div className="absolute left-1/2 -translate-x-1/2 top-[48%] flex justify-center">
+          <CurrentDate />
         </div>
       </div>
     </div>
