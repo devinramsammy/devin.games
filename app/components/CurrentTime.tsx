@@ -35,23 +35,35 @@ const CurrentTime = () => {
 
   return (
     <div className="grid grid-cols-[1fr_auto_1fr] items-baseline">
-      <div className="text-right px-[0.6cqw]">
-        <span className="text-[#9aa0a6] leading-none font-['QuartzMS'] tracking-[0.05em] text-[6cqw]">
+      <div className="text-right" style={{ paddingRight: "0.4vh" }}>
+        <span
+          className="text-[#80878e] leading-none font-['QuartzMS'] tracking-[0.05em]"
+          style={{ fontSize: "7vh" }}
+        >
           {hours}
         </span>
       </div>
 
-      <div className="text-center relative top-[-.9cqw]">
-        <span className="text-[#9aa0a6] leading-none block animate-fade-6s text-[4.5cqw]">
+      <div className="text-center" style={{ position: "relative", top: "-0.6vh" }}>
+        <span
+          className="text-[#80878e] leading-none block animate-fade-6s"
+          style={{ fontSize: "5.5vh" }}
+        >
           :
         </span>
       </div>
 
       <div className="text-left flex items-baseline">
-        <span className="text-[#9aa0a6] leading-none font-['QuartzMS'] text-[6cqw]">
+        <span
+          className="text-[#80878e] leading-none font-['QuartzMS']"
+          style={{ fontSize: "7vh" }}
+        >
           {minutes}
         </span>
-        <span className="text-[#9aa0a6] font-['Adventure'] font-extrabold text-[2.2cqw] ml-[1.9cqw] ">
+        <span
+          className="text-[#80878e] font-['Adventure'] font-extrabold"
+          style={{ fontSize: "2.4vh", marginLeft: "0.8vh" }}
+        >
           {ampm}
         </span>
       </div>

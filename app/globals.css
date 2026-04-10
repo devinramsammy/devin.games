@@ -154,21 +154,21 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+    outline: none;
+    cursor: url('/cursors/wii-hand-3.png'), auto;
   }
   html {
-    background-color: #ffffff;
+    background-color: #bcbcbc;
     background-image: repeating-linear-gradient(
       180deg,
-      #ffffff 0px,
-      #fafafa 1px,
-      #ffffff 2px,
-      #f8f8f8 3px,
-      #ffffff 4px,
-      #fafafa 5px,
-      #ffffff 6px
+      #c0c0c0 0px,
+      #b6b6b6 1px,
+      #bebebe 2px,
+      #c4c4c4 3px,
+      #bdbdbd 4px
     );
-    background-size: 100% 6px;
+    background-size: 100% 4px;
     min-height: 100vh;
   }
   body {

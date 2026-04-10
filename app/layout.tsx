@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+  variable: "--font-nunito",
+});
+
 export const metadata: Metadata = {
-  title: "shadcn nextjs app",
-  description: "minimal shadcn nextjs app",
+  title: "devin.games",
+  description: "Wii-style portfolio",
 };
 
 export default function RootLayout({
@@ -13,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className={`antialiased ${nunito.variable}`}>{children}</body>
     </html>
   );
 }

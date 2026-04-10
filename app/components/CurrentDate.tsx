@@ -27,7 +27,7 @@ const CurrentDate = () => {
   };
 
   return (
-    <div className="text-[#70757a] font-['Adventure'] text-[3cqw] font-extrabold text-center leading-none">
+    <div className="text-[#6a7075] font-['Adventure'] font-extrabold text-center leading-none" style={{ fontSize: "4.2vh" }}>
       {formatDate(date)}
     </div>
   );
