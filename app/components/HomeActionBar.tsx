@@ -134,76 +134,6 @@ const GearButton = ({ onClick }: { onClick?: () => void }) => (
   </motion.button>
 );
 
-const SdCardButton = () => (
-  <motion.button
-    className="flex items-center justify-center cursor-pointer shrink-0"
-    style={{
-      width: `${BAR_VH * 0.32}vh`,
-      height: `${BAR_VH * 0.38}vh`,
-      background: "transparent",
-      border: "none",
-    }}
-    whileHover={{ scale: 1.06 }}
-    whileTap={{ scale: 0.95 }}
-    transition={{ type: "spring", stiffness: 400, damping: 22 }}
-  >
-    <svg
-      viewBox="0 0 30 38"
-      fill="none"
-      style={{ width: "100%", height: "100%" }}
-    >
-      {/* Outer card shape with notched top-left */}
-      <path
-        d="M7 1L23 1Q25 1 25 3L25 35Q25 37 23 37L3 37Q1 37 1 35L1 7Z"
-        fill="#e8f4fa"
-        stroke="#6dcef5"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      {/* White inner label area */}
-      <rect
-        x="4" y="5" width="18" height="18" rx="1.5"
-        fill="white"
-        stroke="#a8ddf0"
-        strokeWidth="0.8"
-      />
-      {/* SD logo drawn as paths - stylized italic */}
-      {/* S letter */}
-      <path
-        d="M8 11.5 Q8 9.5 10.5 9.5 L12.5 9.5 Q14 9.5 14 11 Q14 12.2 12.5 12.5 L10.5 13 Q8.5 13.5 8.5 15 Q8.5 16.8 10.5 16.8 L13 16.8 Q14.5 16.8 14.5 15.5"
-        stroke="#4db8da"
-        strokeWidth="1.6"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* D letter */}
-      <path
-        d="M16 9.5 L16 16.8 M16 9.5 L18.5 9.5 Q21.5 9.5 21.5 13.2 Q21.5 16.8 18.5 16.8 L16 16.8"
-        stroke="#4db8da"
-        strokeWidth="1.6"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Swoosh arc under the letters */}
-      <path
-        d="M7 15 Q11 11.5 18 13.5 Q21 14.5 22 13.5"
-        stroke="#4db8da"
-        strokeWidth="1.1"
-        fill="none"
-        strokeLinecap="round"
-        opacity="0.55"
-      />
-      {/* Blue bar at bottom */}
-      <rect
-        x="4" y="27" width="18" height="5" rx="1"
-        fill="#6dcef5"
-      />
-    </svg>
-  </motion.button>
-);
-
 interface HomeActionBarProps {
   onWiiMenu?: () => void;
 }
@@ -284,10 +214,6 @@ const HomeActionBar = ({ onWiiMenu }: HomeActionBarProps) => {
                 Wii
               </span>
             </CircularButton>
-          </div>
-
-          <div className="pointer-events-auto z-20" style={{ marginLeft: "1vw" }}>
-            <SdCardButton />
           </div>
         </div>
 

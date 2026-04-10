@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ReactNode } from "react";
+import { useState, useMemo, ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Channel, { ChannelData } from "./components/Channel";
 import ChannelView from "./components/ChannelView";
@@ -179,23 +179,29 @@ const ALL_CHANNELS: ChannelData[] = [
 ];
 
 const SLOTS_PER_PAGE = 12;
-const TOTAL_PAGES = 4;
-const TOTAL_SLOTS = SLOTS_PER_PAGE * TOTAL_PAGES;
+const INITIAL_PAGES = 4;
 
-const ALL_SLOTS: ChannelData[] = [
-  ...ALL_CHANNELS,
-  ...Array.from({ length: TOTAL_SLOTS - ALL_CHANNELS.length }, (_, i) => ({
-    id: `empty${i + 1}`,
+const getPage = (pageIndex: number): ChannelData[] => {
+  if (pageIndex === 0) {
+    return [
+      ...ALL_CHANNELS,
+      ...Array.from({ length: SLOTS_PER_PAGE - ALL_CHANNELS.length }, (_, i) => ({
+        id: `empty-0-${i}`,
+        name: "",
+        bgFrom: "",
+        bgTo: "",
+        isEmpty: true,
+      })),
+    ];
+  }
+  return Array.from({ length: SLOTS_PER_PAGE }, (_, i) => ({
+    id: `empty-${pageIndex}-${i}`,
     name: "",
     bgFrom: "",
     bgTo: "",
     isEmpty: true,
-  })),
-];
-
-const PAGES: ChannelData[][] = Array.from({ length: TOTAL_PAGES }, (_, i) =>
-  ALL_SLOTS.slice(i * SLOTS_PER_PAGE, (i + 1) * SLOTS_PER_PAGE)
-);
+  }));
+};
 
 const CHANNEL_ANIMATIONS: Record<string, ReactNode> = {
   disc: <DiscAnimation />,
@@ -210,16 +216,26 @@ const CHANNEL_ANIMATIONS: Record<string, ReactNode> = {
 
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [maxPage, setMaxPage] = useState(INITIAL_PAGES - 1);
   const [openChannelId, setOpenChannelId] = useState<string | null>(null);
 
-  const openChannel = ALL_SLOTS.find((c) => c.id === openChannelId);
+  const pages = useMemo(
+    () => Array.from({ length: maxPage + 1 }, (_, i) => getPage(i)),
+    [maxPage]
+  );
+
+  const openChannel = ALL_CHANNELS.find((c) => c.id === openChannelId);
 
   const goLeft = () => {
     if (currentPage > 0) setCurrentPage((p) => p - 1);
   };
 
   const goRight = () => {
-    if (currentPage < PAGES.length - 1) setCurrentPage((p) => p + 1);
+    setCurrentPage((p) => {
+      const next = p + 1;
+      setMaxPage((m) => Math.max(m, next));
+      return next;
+    });
   };
 
   const handleClose = () => setOpenChannelId(null);
@@ -236,7 +252,7 @@ export default function Dashboard() {
           transition={{ type: "spring", stiffness: 200, damping: 28 }}
           style={{ paddingLeft: "5vw", gap: "0.8vw" }}
         >
-          {PAGES.map((pageChannels, pageIndex) => (
+          {pages.map((pageChannels, pageIndex) => (
             <div
               key={pageIndex}
               className="grid grid-cols-4 grid-rows-3 shrink-0 h-full"
@@ -274,7 +290,6 @@ export default function Dashboard() {
             <NavigationArrow
               direction="right"
               onClick={goRight}
-              disabled={currentPage === PAGES.length - 1}
             />
           </div>
         </div>
